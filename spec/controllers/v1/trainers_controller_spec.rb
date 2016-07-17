@@ -60,11 +60,12 @@ RSpec.describe V1::TrainersController, type: :controller do
   end
 
   describe "#show" do
-    context "trainer exists" do
+    context "trainer exists with case insensitive query" do
       it "returns provided trainer" do
-        trainer = create(:trainer)
+        name = "MIKE"
+        trainer = create(:trainer, name: name )
 
-        get :show, params: { name: trainer.name }
+        get :show, params: { name: trainer.name.downcase }
 
         expect(response.body).to eq trainer.to_json
       end
@@ -171,7 +172,7 @@ RSpec.describe V1::TrainersController, type: :controller do
 
   def stub_invalid_trainer_for_update(trainer)
     allow(trainer).to receive(:update).and_return(false)
-    allow(Trainer).to receive(:find_by).and_return(trainer)
+    allow(Trainer).to receive_message_chain(:where, :first).and_return(trainer)
   end
 
   def stub_invalid_trainer_for_create

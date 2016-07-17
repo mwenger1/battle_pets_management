@@ -39,9 +39,13 @@ module V1
     private
 
     def set_trainer
-      unless @trainer = Trainer.find_by(name: params[:name])
+      unless @trainer = Trainer.where("lower(name) = ?", name_param).first
         render json: {error: ERROR_MESSAGE_404, status: 404}, status: 404
       end
+    end
+
+    def name_param
+      params.require(:name).downcase
     end
 
     def trainer_params
