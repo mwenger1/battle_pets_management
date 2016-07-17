@@ -7,6 +7,6 @@ RSpec.describe Trainer, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to have_many(:battle_pets) }
+    it { is_expected.to have_many(:battle_pets).dependent(:destroy) }
   end
 end
