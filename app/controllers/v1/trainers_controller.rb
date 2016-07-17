@@ -49,7 +49,7 @@ module V1
     end
 
     def trainer_params
-      params.require(:trainer).permit(:name, :class)
+      params.require(:trainer).permit(:name)
     end
   end
 end

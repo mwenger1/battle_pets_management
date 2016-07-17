@@ -5,4 +5,8 @@ RSpec.describe Trainer, type: :model do
     it { is_expected.to validate_uniqueness_of(:name).case_insensitive }
     it { is_expected.to validate_presence_of(:name) }
   end
+
+  describe "associations" do
+    it { is_expected.to have_many(:battle_pets) }
+  end
 end

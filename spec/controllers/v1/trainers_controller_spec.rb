@@ -167,7 +167,7 @@ RSpec.describe V1::TrainersController, type: :controller do
   end
 
   def permitted_params(trainer_name: "Bob")
-    { trainer: { name: trainer_name, type: "type" } }
+    { trainer: { name: trainer_name } }
   end
 
   def stub_invalid_trainer_for_update(trainer)
