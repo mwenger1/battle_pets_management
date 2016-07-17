@@ -39,7 +39,7 @@ class BattlePet < ApplicationRecord
   def randomly_assign_starter_points
     remaining_starter_points = STARTER_EXPERIENCE_POINTS
 
-    SCOREABLE_ATTRIBUTES.each_with_index do |attribute, index|
+    SCOREABLE_ATTRIBUTES.shuffle.each_with_index do |attribute, index|
       random_value = rand(remaining_starter_points)
 
       if index != (SCOREABLE_ATTRIBUTES.size - 1)
