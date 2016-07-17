@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :trainer do
-    name "steve"
+    sequence(:name) { |n| "Trainer #{n}" }
   end
 end

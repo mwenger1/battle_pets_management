@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe TrainersController, type: :controller do
+RSpec.describe V1::TrainersController, type: :controller do
   describe "#index" do
     it "returns all trainers with all attributes as JSON" do
       5.times { create(:trainer) }
@@ -32,6 +32,13 @@ RSpec.describe TrainersController, type: :controller do
         post :create, params: permitted_params
 
         expect(response).to have_http_status(201)
+      end
+
+      it "returns the location of the newly created trainer" do
+        post :create, params: permitted_params
+
+        created_trainer = Trainer.first
+        expect(response.location).to eq v1_trainer_url(created_trainer)
       end
     end
 
