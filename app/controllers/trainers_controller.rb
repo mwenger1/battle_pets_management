@@ -1,19 +1,18 @@
 class TrainersController < ApplicationController
+  ERROR_MESSAGE_404 = "record not found"
+
   before_action :set_trainer, only: [:show, :update, :destroy]
 
-  # GET /trainers
   def index
     @trainers = Trainer.all
 
     render json: @trainers
   end
 
-  # GET /trainers/1
   def show
     render json: @trainer
   end
 
-  # POST /trainers
   def create
     @trainer = Trainer.new(trainer_params)
 
@@ -24,7 +23,6 @@ class TrainersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /trainers/1
   def update
     if @trainer.update(trainer_params)
       render json: @trainer
@@ -33,19 +31,19 @@ class TrainersController < ApplicationController
     end
   end
 
-  # DELETE /trainers/1
   def destroy
     @trainer.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_trainer
-      @trainer = Trainer.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def trainer_params
-      params.require(:trainer).permit(:name, :class)
+  def set_trainer
+    unless @trainer = Trainer.find_by(name: params[:name])
+      render json: {error: ERROR_MESSAGE_404, status: 404}, status: 404
     end
+  end
+
+  def trainer_params
+    params.require(:trainer).permit(:name, :class)
+  end
 end
