@@ -1,24 +1,36 @@
-# README
+BattlePets Management Service
+================
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is to be used with the [BattlePets
+CLI](https://github.com/mwenger1/battle_pets_cli). Be sure to have this server
+running in the background while playing the CLI game.
 
-Things you may want to cover:
+Getting Started
+---------------
 
-* Ruby version
+After you have cloned this repo, run this setup script to set up your machine
+with the necessary dependencies to run and test this app:
 
-* System dependencies
+    % ./bin/setup
 
-* Configuration
+It assumes you have a machine equipped with Ruby, Postgres, Redis, etc. If not,
+set up your machine with [this script].
 
-* Database creation
+[this script]: https://github.com/thoughtbot/laptop
 
-* Database initialization
+After setting up, you can run the application using:
 
-* How to run the test suite
+    % rails s -p 7000
 
-* Services (job queues, cache servers, search engines, etc.)
+NOTE: Using the correct port is critical for the CLI game to work.
 
-* Deployment instructions
+Guidelines
+----------
 
-* ...
+Use the following guides for getting things done, programming well, and
+programming in style.
+
+* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
+* [Best
+  Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
+* [Style](http://github.com/thoughtbot/guides/blob/master/style)

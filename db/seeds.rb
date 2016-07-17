@@ -3,5 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+trainer = Trainer.create(name: "Ash Ketchum")
+
+BattlePet.create(name: "Pikachu", trainer: trainer)
+BattlePet.create(name: "Charizard", trainer: trainer)
+BattlePet.create(name: "Squirtle", trainer: trainer)
